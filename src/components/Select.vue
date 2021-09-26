@@ -1,11 +1,11 @@
 <template>
   <div>
-    <select name="options" id="select" :class="selectedItem.class">
+    <select name="options" id="select" :class="selectedItem.class" @change="choose($event)">
       <option
         v-for="(item, index) in items"
+        :value="index"
         :key="index"
         :class="item.class"
-        @click="choose(index)"
       >
         {{ item.text }}
       </option>
@@ -32,8 +32,8 @@ export default {
     },
   },
   methods: {
-    choose(index) {
-      this.selectedItemIndex = index
+    choose(event) {
+      this.selectedItemIndex = event.target.value;
     },
   },
 }
